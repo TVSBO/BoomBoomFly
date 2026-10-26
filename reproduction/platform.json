@@ -1,0 +1,7 @@
+{
+  "system": "Linux-6.1.99-rockchip-rk3588-aarch64-with-glibc2.35",
+  "architecture": "aarch64",
+  "source": "/home/orangepi/BoomBoomFly",
+  "snapshot_date": "2026-10-25",
+  "note": "Source snapshot; not a new clean-machine build or hardware acceptance."
+}

@@ -1,0 +1,11 @@
+{
+  "px4_commit": "d6f12ad1c4f70ad3230afd7d86e971421e02fef4",
+  "sha256": {
+    "Timesync.cpp": "6ed228a88d7cb9d8d0456d96f0ed2d41c8320f1ce72fbfacf1b14e654939179e",
+    "Timesync.hpp": "94e7fc51a68b6dacc0417e84eac240542c2a548c049f35e6bca71afd555a49e2",
+    "board_config.h": "921e2bd1e53e8752564013b6acdbd36ea86e4d80643cf40da2b0200dde8b86af",
+    "dds_topics.h.em": "de5f8e819e330989e7c60abe73ec62364cb564e31c3d3ef54eddd2c0ce44b774",
+    "dds_topics.yaml": "57993e37a0e008af137733a3764d6f2eec6dd2c6b98f646f19b75337579953e9",
+    "uxrce_dds_client.cpp": "4955dc50e035e089370aa1afde4bb519ce5a57c47db4a451aae0faf31488a848"
+  }
+}

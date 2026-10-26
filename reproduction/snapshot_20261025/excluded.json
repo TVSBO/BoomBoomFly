@@ -1,0 +1,378 @@
+[
+  {
+    "path": ".git/",
+    "reason": "metadata/build/install/log/cache/download"
+  },
+  {
+    "path": ".codex/",
+    "reason": "metadata/build/install/log/cache/download"
+  },
+  {
+    "path": "log/",
+    "reason": "metadata/build/install/log/cache/download"
+  },
+  {
+    "path": ".aws/",
+    "reason": "metadata/build/install/log/cache/download"
+  },
+  {
+    "path": ".pytest_cache/",
+    "reason": "metadata/build/install/log/cache/download"
+  },
+  {
+    "path": ".repo/",
+    "reason": "metadata/build/install/log/cache/download"
+  },
+  {
+    "path": "_exports/",
+    "reason": "metadata/build/install/log/cache/download"
+  },
+  {
+    "path": ".agents/",
+    "reason": "metadata/build/install/log/cache/download"
+  },
+  {
+    "path": "log_35_UnknownDate.ulg",
+    "reason": "generated binary, recording, log or archive"
+  },
+  {
+    "path": "log_23_UnknownDate.ulg",
+    "reason": "generated binary, recording, log or archive"
+  },
+  {
+    "path": "log_27_UnknownDate.ulg",
+    "reason": "generated binary, recording, log or archive"
+  },
+  {
+    "path": "log_26_UnknownDate.ulg",
+    "reason": "generated binary, recording, log or archive"
+  },
+  {
+    "path": "log_21_UnknownDate.ulg",
+    "reason": "generated binary, recording, log or archive"
+  },
+  {
+    "path": "log_22_UnknownDate.ulg",
+    "reason": "generated binary, recording, log or archive"
+  },
+  {
+    "path": "log_25_UnknownDate.ulg",
+    "reason": "generated binary, recording, log or archive"
+  },
+  {
+    "path": "log_28_UnknownDate.ulg",
+    "reason": "generated binary, recording, log or archive"
+  },
+  {
+    "path": "log_36_UnknownDate.ulg",
+    "reason": "generated binary, recording, log or archive"
+  },
+  {
+    "path": "log_24_UnknownDate.ulg",
+    "reason": "generated binary, recording, log or archive"
+  },
+  {
+    "path": "swarm_ws/.git/",
+    "reason": "metadata/build/install/log/cache/download"
+  },
+  {
+    "path": "uav_ws/.git/",
+    "reason": "metadata/build/install/log/cache/download"
+  },
+  {
+    "path": "uav_ws/install/",
+    "reason": "metadata/build/install/log/cache/download"
+  },
+  {
+    "path": "uav_ws/log/",
+    "reason": "metadata/build/install/log/cache/download"
+  },
+  {
+    "path": "uav_ws/build/",
+    "reason": "metadata/build/install/log/cache/download"
+  },
+  {
+    "path": "uav_ws/src/uav_bridge/.git/",
+    "reason": "metadata/build/install/log/cache/download"
+  },
+  {
+    "path": "uav_ws/src/uav_control/.git/",
+    "reason": "metadata/build/install/log/cache/download"
+  },
+  {
+    "path": "uav_ws/src/uav_control/test/__pycache__/",
+    "reason": "metadata/build/install/log/cache/download"
+  },
+  {
+    "path": "uav_ws/src/uav_bringup/.git/",
+    "reason": "metadata/build/install/log/cache/download"
+  },
+  {
+    "path": "uav_ws/src/uav_bringup/launch/__pycache__/",
+    "reason": "metadata/build/install/log/cache/download"
+  },
+  {
+    "path": "uav_ws/src/uav_bringup/scripts/__pycache__/",
+    "reason": "metadata/build/install/log/cache/download"
+  },
+  {
+    "path": "uav_ws/src/uav_bringup/test/__pycache__/",
+    "reason": "metadata/build/install/log/cache/download"
+  },
+  {
+    "path": "uav_ws/src/thirdparty/realsense-ros/.git/",
+    "reason": "metadata/build/install/log/cache/download"
+  },
+  {
+    "path": "uav_ws/src/thirdparty/px4_msgs/.git/",
+    "reason": "metadata/build/install/log/cache/download"
+  },
+  {
+    "path": "uav_ws/src/thirdparty/mavros/.git/",
+    "reason": "metadata/build/install/log/cache/download"
+  },
+  {
+    "path": "uav_ws/src/thirdparty/open_vins/.git/",
+    "reason": "metadata/build/install/log/cache/download"
+  },
+  {
+    "path": "uav_ws/src/thirdparty/open_vins/ov_data/uzhfpv_outdoor/",
+    "reason": "upstream example datasets (keep package metadata)"
+  },
+  {
+    "path": "uav_ws/src/thirdparty/open_vins/ov_data/euroc_mav/",
+    "reason": "upstream example datasets (keep package metadata)"
+  },
+  {
+    "path": "uav_ws/src/thirdparty/open_vins/ov_data/tum_vi/",
+    "reason": "upstream example datasets (keep package metadata)"
+  },
+  {
+    "path": "uav_ws/src/thirdparty/open_vins/ov_data/uzhfpv_indoor/",
+    "reason": "upstream example datasets (keep package metadata)"
+  },
+  {
+    "path": "uav_ws/src/thirdparty/open_vins/ov_data/kaist/",
+    "reason": "upstream example datasets (keep package metadata)"
+  },
+  {
+    "path": "uav_ws/src/thirdparty/open_vins/ov_data/uzhfpv_outdoor_45/",
+    "reason": "upstream example datasets (keep package metadata)"
+  },
+  {
+    "path": "uav_ws/src/thirdparty/open_vins/ov_data/sim/",
+    "reason": "upstream example datasets (keep package metadata)"
+  },
+  {
+    "path": "uav_ws/src/thirdparty/open_vins/ov_data/rpng_ironsides/",
+    "reason": "upstream example datasets (keep package metadata)"
+  },
+  {
+    "path": "uav_ws/src/thirdparty/open_vins/ov_data/uzhfpv_indoor_45/",
+    "reason": "upstream example datasets (keep package metadata)"
+  },
+  {
+    "path": "uav_ws/src/thirdparty/open_vins/ov_data/kaist_vio/",
+    "reason": "upstream example datasets (keep package metadata)"
+  },
+  {
+    "path": "uav_ws/src/thirdparty/open_vins/ov_data/rpng_plane/",
+    "reason": "upstream example datasets (keep package metadata)"
+  },
+  {
+    "path": "uav_ws/src/uav_mission/.git/",
+    "reason": "metadata/build/install/log/cache/download"
+  },
+  {
+    "path": "uav_ws/calibration/windows_kalibr_20261018/calibration_full-poses-imucam-imu0.csv",
+    "reason": "calibration recording/report; retain calibration inputs and YAML"
+  },
+  {
+    "path": "uav_ws/calibration/windows_kalibr_20261018/calibration_full-report-imucam.pdf",
+    "reason": "calibration recording/report; retain calibration inputs and YAML"
+  },
+  {
+    "path": "uav_ws/calibration/windows_kalibr_20261018/calibration_full-results-imucam.txt",
+    "reason": "calibration recording/report; retain calibration inputs and YAML"
+  },
+  {
+    "path": "uav_ws/calibration/windows_kalibr_20261018/kalibr_windows.log",
+    "reason": "generated binary, recording, log or archive"
+  },
+  {
+    "path": "uav_ws/calibration/windows_kalibr_20261018/audit_geometry.json",
+    "reason": "calibration recording/report; retain calibration inputs and YAML"
+  },
+  {
+    "path": "uav_ws/calibration/vio_calib_run_20261018/continuous_20_144_4hz-results-cam.txt",
+    "reason": "calibration recording/report; retain calibration inputs and YAML"
+  },
+  {
+    "path": "uav_ws/calibration/vio_calib_run_20261018/calibration_full-poses-imucam-imu0.csv",
+    "reason": "calibration recording/report; retain calibration inputs and YAML"
+  },
+  {
+    "path": "uav_ws/calibration/vio_calib_run_20261018/excitation_check.json",
+    "reason": "calibration recording/report; retain calibration inputs and YAML"
+  },
+  {
+    "path": "uav_ws/calibration/vio_calib_run_20261018/prepared_input.json",
+    "reason": "calibration recording/report; retain calibration inputs and YAML"
+  },
+  {
+    "path": "uav_ws/calibration/vio_calib_run_20261018/imu_help.txt",
+    "reason": "calibration recording/report; retain calibration inputs and YAML"
+  },
+  {
+    "path": "uav_ws/calibration/vio_calib_run_20261018/environment_ready.txt",
+    "reason": "calibration recording/report; retain calibration inputs and YAML"
+  },
+  {
+    "path": "uav_ws/calibration/vio_calib_run_20261018/prepare.log",
+    "reason": "generated binary, recording, log or archive"
+  },
+  {
+    "path": "uav_ws/calibration/vio_calib_run_20261018/calibration_full-report-imucam.pdf",
+    "reason": "calibration recording/report; retain calibration inputs and YAML"
+  },
+  {
+    "path": "uav_ws/calibration/vio_calib_run_20261018/camera_help.txt",
+    "reason": "calibration recording/report; retain calibration inputs and YAML"
+  },
+  {
+    "path": "uav_ws/calibration/vio_calib_run_20261018/calibration_full.bag",
+    "reason": "generated binary, recording, log or archive"
+  },
+  {
+    "path": "uav_ws/calibration/vio_calib_run_20261018/state_check.json",
+    "reason": "calibration recording/report; retain calibration inputs and YAML"
+  },
+  {
+    "path": "uav_ws/calibration/vio_calib_run_20261018/calibration_full-results-imucam.txt",
+    "reason": "calibration recording/report; retain calibration inputs and YAML"
+  },
+  {
+    "path": "uav_ws/calibration/vio_calib_run_20261018/imu_camera.log",
+    "reason": "generated binary, recording, log or archive"
+  },
+  {
+    "path": "uav_ws/calibration/vio_calib_run_20261018/stereo.log",
+    "reason": "generated binary, recording, log or archive"
+  },
+  {
+    "path": "uav_ws/calibration/vio_calib_run_20261018/target_confirmation.json",
+    "reason": "calibration recording/report; retain calibration inputs and YAML"
+  },
+  {
+    "path": "uav_ws/calibration/vio_calib_run_20261018/continuous_20_144_4hz.bag",
+    "reason": "generated binary, recording, log or archive"
+  },
+  {
+    "path": "ugv_ws/.git/",
+    "reason": "metadata/build/install/log/cache/download"
+  },
+  {
+    "path": "ugv_ws/src/car/car_mission/.git/",
+    "reason": "metadata/build/install/log/cache/download"
+  },
+  {
+    "path": "ugv_ws/src/car/car_navigation/.git/",
+    "reason": "metadata/build/install/log/cache/download"
+  },
+  {
+    "path": "ugv_ws/src/car/car_bringup/.git/",
+    "reason": "metadata/build/install/log/cache/download"
+  },
+  {
+    "path": "ugv_ws/src/fpga_gateway/.git/",
+    "reason": "metadata/build/install/log/cache/download"
+  },
+  {
+    "path": "tools/dofarifa_reference/.git/",
+    "reason": "metadata/build/install/log/cache/download"
+  },
+  {
+    "path": "tools/dofarifa_reference/.gitmodules",
+    "reason": "nested Git metadata; upstream identity in repository lock"
+  },
+  {
+    "path": "tools/micro_xrce_dds_agent/.git/",
+    "reason": "metadata/build/install/log/cache/download"
+  },
+  {
+    "path": "tools/micro_xrce_dds_agent/install/",
+    "reason": "metadata/build/install/log/cache/download"
+  },
+  {
+    "path": "tools/micro_xrce_dds_agent/build/",
+    "reason": "metadata/build/install/log/cache/download"
+  },
+  {
+    "path": "tools/px4_timesync_fix/firmware/",
+    "reason": "restore from pinned upstream; compiler downloaded separately"
+  },
+  {
+    "path": "tools/px4_timesync_fix/artifacts/",
+    "reason": "metadata/build/install/log/cache/download"
+  },
+  {
+    "path": "tools/px4_timesync_fix/release_20261022/",
+    "reason": "firmware release/backup outputs; required parameters extracted separately"
+  },
+  {
+    "path": "tools/px4_timesync_fix/venv/",
+    "reason": "metadata/build/install/log/cache/download"
+  },
+  {
+    "path": "tools/px4_timesync_fix/arm-gnu-toolchain-13.2.Rel1-aarch64-arm-none-eabi/",
+    "reason": "restore from pinned upstream; compiler downloaded separately"
+  },
+  {
+    "path": "tools/px4_timesync_fix/downloads/",
+    "reason": "metadata/build/install/log/cache/download"
+  },
+  {
+    "path": "tools/px4_timesync_fix/release_20261022_v2/",
+    "reason": "firmware release/backup outputs; required parameters extracted separately"
+  },
+  {
+    "path": "tools/px4_timesync_fix/release_20261022_v3/",
+    "reason": "firmware release/backup outputs; required parameters extracted separately"
+  },
+  {
+    "path": "tools/px4_timesync_fix/test_summary.stdout",
+    "reason": "generated binary, recording, log or archive"
+  },
+  {
+    "path": "tools/px4_timesync_fix/sync_v3_build.log",
+    "reason": "generated binary, recording, log or archive"
+  },
+  {
+    "path": "tools/px4_timesync_fix/replay",
+    "reason": "compiled executable or generated test result"
+  },
+  {
+    "path": "tools/px4_timesync_fix/results.json",
+    "reason": "compiled executable or generated test result"
+  },
+  {
+    "path": "tools/px4_timesync_fix/release_20261022.tar.gz",
+    "reason": "generated binary, recording, log or archive"
+  },
+  {
+    "path": "tools/px4_timesync_fix/sync_only_build.log",
+    "reason": "generated binary, recording, log or archive"
+  },
+  {
+    "path": "tools/px4_timesync_fix/patched_build.log",
+    "reason": "generated binary, recording, log or archive"
+  },
+  {
+    "path": "tools/px4_timesync_fix/sync_v2_build.log",
+    "reason": "generated binary, recording, log or archive"
+  },
+  {
+    "path": "tools/px4_timesync_fix/baseline_build.log",
+    "reason": "generated binary, recording, log or archive"
+  }
+]

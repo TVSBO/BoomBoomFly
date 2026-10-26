@@ -1,0 +1,65 @@
+{
+  "snapshot_date": "2026-10-25",
+  "publication_date": "2026-10-26",
+  "runtime_source_config_files_byte_identical": 238,
+  "original_snapshot_modified": false,
+  "ros_build_run": false,
+  "hardware_run": false,
+  "repositories": {
+    "BoomBoomFly": ".",
+    "uav_ws": "uav_ws",
+    "uav_control": "uav_ws/src/uav_control",
+    "uav_vio_bridge": "uav_ws/src/uav_bridge",
+    "uav_bringup": "uav_ws/src/uav_bringup",
+    "uav_mission": "uav_ws/src/uav_mission",
+    "open_vins": "uav_ws/src/thirdparty/open_vins"
+  },
+  "python_files_parsed": 15,
+  "shell_scripts_syntax_checked": 6,
+  "package_xml_parsed": 10,
+  "subrepositories": {
+    "uav_ws": {
+      "commit": "b43f30f8ec1a4fe45a062fff5ea0ab076a6b19e6",
+      "files": 38,
+      "largest_file_bytes": 24854,
+      "historical_whitespace_diagnostic_lines": 224
+    },
+    "uav_control": {
+      "commit": "550e95a10147b69e5cb2d350624122b941cdbe07",
+      "files": 18,
+      "largest_file_bytes": 28931,
+      "historical_whitespace_diagnostic_lines": 0
+    },
+    "uav_vio_bridge": {
+      "commit": "9f1bd8e3ac7ea71a19baef7c74a693581363099c",
+      "files": 12,
+      "largest_file_bytes": 42090,
+      "historical_whitespace_diagnostic_lines": 0
+    },
+    "uav_bringup": {
+      "commit": "1c2d38311358dfddf3ba3e69f8655c8d3f8f4723",
+      "files": 18,
+      "largest_file_bytes": 41849,
+      "historical_whitespace_diagnostic_lines": 0
+    },
+    "uav_mission": {
+      "commit": "dbf7c61975a6c492d7f80c802d5e76fd5c030a91",
+      "files": 13,
+      "largest_file_bytes": 36330,
+      "historical_whitespace_diagnostic_lines": 0
+    },
+    "open_vins": {
+      "commit": "9cc4bf555f70075d0b6f2c3bdf70724c15a9b970",
+      "files": 337,
+      "largest_file_bytes": 7409776,
+      "historical_whitespace_diagnostic_lines": 273
+    }
+  },
+  "remote_push_verified": true,
+  "note": "Static publication checks only. Historical source whitespace retained; no ROS/PX4 build or hardware run.",
+  "local_clean_clone_exact_restore": "passed for all six subrepositories; repeated restore passed",
+  "remote_publication_status": "published: all seven public repositories; remote commits matched local commits",
+  "remote_clean_clone_exact_restore": true,
+  "remote_repeated_restore_passed": true,
+  "remote_restoration_tested_main_commit": "d59cde1bc31af945681cd6e1ed6b9d324706e946"
+}

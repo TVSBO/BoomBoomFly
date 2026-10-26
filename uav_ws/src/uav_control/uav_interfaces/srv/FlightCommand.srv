@@ -1,0 +1,12 @@
+uint8 SET_OFFBOARD=1
+uint8 ARM=2
+uint8 LAND=3
+uint8 DISARM=4
+
+uint32 command_id
+uint8 command
+---
+# True means accepted by the control node for forwarding; final acceptance is
+# reported later in VehicleState and must be confirmed against FCU state.
+bool dispatched
+string message

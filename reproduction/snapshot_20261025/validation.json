@@ -1,0 +1,20 @@
+{
+  "original_files_verified": 1778,
+  "intentional_export_changes": [
+    "README.md",
+    ".gitignore",
+    "swarm_ws/.gitignore",
+    "uav_ws/.gitignore",
+    "ugv_ws/.gitignore"
+  ],
+  "missing_files": [],
+  "package_xml_parsed": 29,
+  "colcon_uav_packages_discovered": 19,
+  "python_files_syntax_checked": 10,
+  "shell_scripts_syntax_checked": 3,
+  "compiled_binaries_found": 0,
+  "firmware_patch_matches_v3": true,
+  "clean_machine_build_run": false,
+  "hardware_run": false,
+  "source_project_modified": false
+}

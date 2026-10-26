@@ -1,0 +1,22 @@
+[
+  {
+    "path": "uav_ws/src/thirdparty/px4_msgs",
+    "origin": "https://github.com/PX4/px4_msgs.git",
+    "commit": "86d8239e962f6939e05c3737784f60c02fa884db"
+  },
+  {
+    "path": "uav_ws/src/thirdparty/mavros",
+    "origin": "https://github.com/mavlink/mavros.git",
+    "commit": "5c68b905ab30de6ce630822dc46c33467e8f23ea"
+  },
+  {
+    "path": "uav_ws/src/thirdparty/realsense-ros",
+    "origin": "https://github.com/realsenseai/realsense-ros.git",
+    "commit": "53aceeac29e2e848e5e1ede5430124f07b2fe924"
+  },
+  {
+    "path": "tools/micro_xrce_dds_agent",
+    "origin": "https://github.com/eProsima/Micro-XRCE-DDS-Agent.git",
+    "commit": "57d086216d01ec43121845d385894a25987f8a2c"
+  }
+]

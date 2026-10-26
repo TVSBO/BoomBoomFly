@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='utf-8'?>
+<manifest>
+  <remote name="origin" fetch="https://github.com/QU-of-boomboom" />
+  <default remote="origin" revision="refs/heads/main" sync-j="4" />
+  <project name="uav_ws" path="uav_ws" groups="uav" revision="b43f30f8ec1a4fe45a062fff5ea0ab076a6b19e6" />
+  <project name="uav_control" path="uav_ws/src/uav_control" groups="uav" revision="550e95a10147b69e5cb2d350624122b941cdbe07" />
+  <project name="uav_vio_bridge" path="uav_ws/src/uav_bridge" groups="uav" revision="9f1bd8e3ac7ea71a19baef7c74a693581363099c" />
+  <project name="uav_bringup" path="uav_ws/src/uav_bringup" groups="uav" revision="1c2d38311358dfddf3ba3e69f8655c8d3f8f4723" />
+  <project name="uav_mission" path="uav_ws/src/uav_mission" groups="uav" revision="dbf7c61975a6c492d7f80c802d5e76fd5c030a91" />
+  <project name="open_vins" path="uav_ws/src/thirdparty/open_vins" groups="uav" revision="9cc4bf555f70075d0b6f2c3bdf70724c15a9b970" />
+</manifest>

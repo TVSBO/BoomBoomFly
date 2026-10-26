@@ -1,0 +1,135 @@
+[
+  {
+    "path": ".",
+    "origin": "https://github.com/BoomBoomFly/BoomBoomFly.git",
+    "commit": "73293929adfca91f36e8c5cd4c08259da7083caa",
+    "branch": "main",
+    "status": "M README.md\n?? tools/"
+  },
+  {
+    "path": "swarm_ws",
+    "origin": "https://github.com/BoomBoomFly/swarm_ws",
+    "commit": "dc2914b590f3015003e2124f97ba7c6501326b5e",
+    "branch": "",
+    "status": ""
+  },
+  {
+    "path": "uav_ws",
+    "origin": "https://github.com/BoomBoomFly/uav_ws.git",
+    "commit": "271a94032eb7f6616182ba42898f772cddeb93ff",
+    "branch": "main",
+    "status": "M config/openvins/d435i_px4/estimator_config.yaml\n M \"docs/OrangePi5Plus_OpenVINS\\346\\216\\245\\345\\205\\245\\351\\205\\215\\347\\275\\256.md\"\n?? calibration/\n?? src/"
+  },
+  {
+    "path": "uav_ws/src/uav_bridge",
+    "origin": "https://github.com/BoomBoomFly/uav_vio_bridge.git",
+    "commit": "d2583a018586a7a5d7bb16176cac625dc4da65b1",
+    "branch": "main",
+    "status": ""
+  },
+  {
+    "path": "uav_ws/src/uav_control",
+    "origin": "https://github.com/BoomBoomFly/uav_control.git",
+    "commit": "51b779b1f11e4dfd53067d72efcc7c3089e67739",
+    "branch": "main",
+    "status": "M CMakeLists.txt\n M include/uav_control/px4_dds_interface.hpp\n M package.xml\n M src/px4_dds_interface.cpp\n?? test/"
+  },
+  {
+    "path": "uav_ws/src/uav_bringup",
+    "origin": "https://github.com/BoomBoomFly/uav_bringup.git",
+    "commit": "a7684ef7e4ed6473289440458c1448dddc608e0e",
+    "branch": "main",
+    "status": "M CMakeLists.txt\n M README.md\n M config/uav.yaml\n M launch/uav.launch.py\n M test/test_vio_tools.py\n?? test/test_mission_launch.py"
+  },
+  {
+    "path": "uav_ws/src/thirdparty/realsense-ros",
+    "origin": "https://github.com/realsenseai/realsense-ros.git",
+    "commit": "53aceeac29e2e848e5e1ede5430124f07b2fe924",
+    "branch": "",
+    "status": ""
+  },
+  {
+    "path": "uav_ws/src/thirdparty/px4_msgs",
+    "origin": "https://github.com/PX4/px4_msgs.git",
+    "commit": "86d8239e962f6939e05c3737784f60c02fa884db",
+    "branch": "release/1.17",
+    "status": ""
+  },
+  {
+    "path": "uav_ws/src/thirdparty/mavros",
+    "origin": "https://github.com/mavlink/mavros.git",
+    "commit": "5c68b905ab30de6ce630822dc46c33467e8f23ea",
+    "branch": "ros2",
+    "status": ""
+  },
+  {
+    "path": "uav_ws/src/thirdparty/open_vins",
+    "origin": "https://github.com/BoomBoomFly/open_vins.git",
+    "commit": "7900940f205a45786d3c06b15b3cbffeaa326c36",
+    "branch": "master",
+    "status": "M ov_msckf/launch/subscribe.launch.py\n M ov_msckf/src/ros/ROS2Visualizer.cpp\n M ov_msckf/src/ros/ROS2Visualizer.h\n M ov_msckf/src/run_subscribe_msckf.cpp"
+  },
+  {
+    "path": "uav_ws/src/uav_mission",
+    "origin": "https://github.com/BoomBoomFly/uav_mission.git",
+    "commit": "80ca62ffba2543eb4dbf17d1710b6449dfb5166e",
+    "branch": "main",
+    "status": "M CMakeLists.txt\n M README.md\n M include/uav_mission/flight_task.hpp\n M include/uav_mission/mission_node.hpp\n M package.xml\n M src/flight_task.cpp\n M src/mission_node.cpp\n?? test/"
+  },
+  {
+    "path": "ugv_ws",
+    "origin": "https://github.com/BoomBoomFly/ugv_ws",
+    "commit": "e4c5798d51fa3a29e4ca17ae60139af5c8973288",
+    "branch": "",
+    "status": ""
+  },
+  {
+    "path": "ugv_ws/src/car/car_mission",
+    "origin": "https://github.com/BoomBoomFly/car_mission",
+    "commit": null,
+    "branch": "master",
+    "status": ""
+  },
+  {
+    "path": "ugv_ws/src/car/car_navigation",
+    "origin": "https://github.com/BoomBoomFly/car_navigation",
+    "commit": null,
+    "branch": "master",
+    "status": ""
+  },
+  {
+    "path": "ugv_ws/src/car/car_bringup",
+    "origin": "https://github.com/BoomBoomFly/car_bringup",
+    "commit": null,
+    "branch": "master",
+    "status": ""
+  },
+  {
+    "path": "ugv_ws/src/fpga_gateway",
+    "origin": "https://github.com/BoomBoomFly/fpga_gateway",
+    "commit": null,
+    "branch": "master",
+    "status": ""
+  },
+  {
+    "path": "tools/dofarifa_reference",
+    "origin": "https://github.com/dofarifa/Unmanned-Aerial-Vehicle.git",
+    "commit": "f4ad78e83a03627eae62552dcf1d7eddc16fbf2e",
+    "branch": "main",
+    "status": ""
+  },
+  {
+    "path": "tools/micro_xrce_dds_agent",
+    "origin": "https://github.com/eProsima/Micro-XRCE-DDS-Agent.git",
+    "commit": "57d086216d01ec43121845d385894a25987f8a2c",
+    "branch": "",
+    "status": "?? install/"
+  },
+  {
+    "path": "tools/px4_timesync_fix/firmware",
+    "origin": "https://github.com/PX4/PX4-Autopilot.git",
+    "commit": "d6f12ad1c4f70ad3230afd7d86e971421e02fef4",
+    "branch": "",
+    "status": "M src/lib/timesync/Timesync.cpp\n M src/lib/timesync/Timesync.hpp\n M src/modules/uxrce_dds_client/uxrce_dds_client.cpp\n M src/modules/uxrce_dds_client/uxrce_dds_client.h"
+  }
+]

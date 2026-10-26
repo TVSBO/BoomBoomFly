@@ -1,0 +1,11 @@
+{
+  "target": "micoair_h743-v2_default",
+  "px4_commit": "d6f12ad1c4f70ad3230afd7d86e971421e02fef4",
+  "compiler": "Arm GNU Toolchain 13.2.rel1 aarch64 arm-none-eabi",
+  "compiler_archive_sha256": "8fd8b4a0a8d44ab2e195ccfbeef42223dfb3ede29d80f14dcf2183c34b8d199a",
+  "compiler_download": "https://developer.arm.com/-/media/Files/downloads/gnu/13.2.rel1/binrel/arm-gnu-toolchain-13.2.rel1-aarch64-arm-none-eabi.tar.xz",
+  "baseline_status": "built_and_verified",
+  "patched_status": "built_and_verified",
+  "flashed": false,
+  "parameter_snapshot_count": 983
+}

@@ -1,0 +1,10 @@
+FROM kalibr:latest
+
+# Keep the original image intact. wx is imported even for Kalibr CLI help;
+# Xvfb supports report code that requires a display on this headless board.
+RUN apt-get update \
+    && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+       python3-wxgtk4.0 python3-igraph python3-cairo xvfb xauth \
+    && rm -rf /var/lib/apt/lists/*
+
+ENV MPLBACKEND=Agg

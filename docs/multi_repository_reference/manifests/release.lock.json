@@ -1,0 +1,38 @@
+[
+  {
+    "name": "uav_ws",
+    "path": "uav_ws",
+    "url": "https://github.com/QU-of-boomboom/uav_ws.git",
+    "commit": "b43f30f8ec1a4fe45a062fff5ea0ab076a6b19e6"
+  },
+  {
+    "name": "uav_control",
+    "path": "uav_ws/src/uav_control",
+    "url": "https://github.com/QU-of-boomboom/uav_control.git",
+    "commit": "550e95a10147b69e5cb2d350624122b941cdbe07"
+  },
+  {
+    "name": "uav_vio_bridge",
+    "path": "uav_ws/src/uav_bridge",
+    "url": "https://github.com/QU-of-boomboom/uav_vio_bridge.git",
+    "commit": "9f1bd8e3ac7ea71a19baef7c74a693581363099c"
+  },
+  {
+    "name": "uav_bringup",
+    "path": "uav_ws/src/uav_bringup",
+    "url": "https://github.com/QU-of-boomboom/uav_bringup.git",
+    "commit": "1c2d38311358dfddf3ba3e69f8655c8d3f8f4723"
+  },
+  {
+    "name": "uav_mission",
+    "path": "uav_ws/src/uav_mission",
+    "url": "https://github.com/QU-of-boomboom/uav_mission.git",
+    "commit": "dbf7c61975a6c492d7f80c802d5e76fd5c030a91"
+  },
+  {
+    "name": "open_vins",
+    "path": "uav_ws/src/thirdparty/open_vins",
+    "url": "https://github.com/QU-of-boomboom/open_vins.git",
+    "commit": "9cc4bf555f70075d0b6f2c3bdf70724c15a9b970"
+  }
+]

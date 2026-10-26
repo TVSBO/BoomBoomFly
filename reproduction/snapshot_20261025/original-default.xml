@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='utf-8'?>
+<manifest>
+  <remote name="origin" fetch="https://github.com/BoomBoomFly" />
+  <default remote="origin" revision="refs/heads/main" sync-j="4" />
+  <project name="uav_ws" path="uav_ws" groups="uav" />
+  <project name="ugv_ws" path="ugv_ws" groups="ugv" />
+  <project name="swarm_ws" path="swarm_ws" groups="swarm" />
+  <project name="uav_control" path="uav_ws/src/uav_control" groups="uav" />
+  <project name="uav_vio_bridge" path="uav_ws/src/uav_bridge" groups="uav" />
+  <project name="uav_bringup" path="uav_ws/src/uav_bringup" groups="uav" />
+  <project name="uav_mission" path="uav_ws/src/uav_mission" groups="uav" />
+  <project name="fpga_gateway" path="ugv_ws/src/fpga_gateway" groups="ugv" />
+  <project name="car_bringup" path="ugv_ws/src/car/car_bringup" groups="ugv" />
+  <project name="car_navigation" path="ugv_ws/src/car/car_navigation" groups="ugv" />
+  <project name="car_mission" path="ugv_ws/src/car/car_mission" groups="ugv" />
+</manifest>

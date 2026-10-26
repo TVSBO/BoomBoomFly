@@ -1,0 +1,63 @@
+--- a/src/modules/uxrce_dds_client/uxrce_dds_client.cpp
++++ b/src/modules/uxrce_dds_client/uxrce_dds_client.cpp
+@@ -52,6 +52,8 @@
+ static constexpr char NAMESPACE_PREFIX[] = "uav_";
+ #define PARTICIPANT_XML_SIZE 512
+ static constexpr uint8_t TIMESYNC_MAX_TIMEOUTS = 10;
++// Keep the sample interval consistent: Timesync estimates skew per sample.
++static constexpr hrt_abstime TIMESYNC_INTERVAL_US = 100'000;
+ 
+ using namespace time_literals;
+ 
+@@ -327,6 +329,7 @@
+ 
+ 	// Spin until in sync with the Agent or the session time sync has multiple timeouts
+ 	while (_synchronize_timestamps) {
++		const hrt_abstime sync_started = hrt_absolute_time();
+ 		if (uxr_sync_session(session, 1000)) {
+ 			if (_timesync.sync_converged()) {
+ 				PX4_INFO("synchronized with time offset %-5" PRId64 "us", session->time_offset / 1000);
+@@ -349,7 +352,11 @@
+ 			return false;
+ 		}
+ 
+-		px4_usleep(10'000);
++		const hrt_abstime sync_elapsed = hrt_elapsed_time(&sync_started);
++
++		if (sync_elapsed < TIMESYNC_INTERVAL_US) {
++			px4_usleep(TIMESYNC_INTERVAL_US - sync_elapsed);
++		}
+ 	}
+ 
+ 	if (!_pubs->init(session, _reliable_out, reliable_in, best_effort_in, _participant_id, _client_namespace)) {
+@@ -681,12 +688,14 @@
+ 			process_replies();
+ 
+ 			// time sync session
+-			if (_synchronize_timestamps && hrt_elapsed_time(&last_sync_session) > 1_s) {
+-
+-				if (uxr_sync_session(&session, 10) && _timesync.sync_converged()) {
+-					last_sync_session = hrt_absolute_time();
+-
+-					if (_param_uxrce_dds_syncc.get() > 0) {
++			if (_synchronize_timestamps && hrt_elapsed_time(&last_sync_session) >= TIMESYNC_INTERVAL_US) {
++
++				const hrt_abstime sync_started = hrt_absolute_time();
++
++				if (uxr_sync_session(&session, 10)) {
++					last_sync_session = sync_started;
++
++					if (_timesync.sync_converged() && _param_uxrce_dds_syncc.get() > 0) {
+ 						syncSystemClock(&session);
+ 					}
+ 				}
+--- a/src/modules/uxrce_dds_client/dds_topics.yaml
++++ b/src/modules/uxrce_dds_client/dds_topics.yaml
+@@ -45,6 +45,7 @@
+ 
+   - topic: /fmu/out/sensor_combined
+     type: px4_msgs::msg::SensorCombined
++    rate_limit: 200.
+ 
+   - topic: /fmu/out/timesync_status
+     type: px4_msgs::msg::TimesyncStatus

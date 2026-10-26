@@ -1,0 +1,24 @@
+# repo 客户端元数据
+/.repo/
+
+# 主仓库日志
+/log/
+
+# 独立工作区仓库：在各自仓库中管理源码及 sim
+/uav_ws/
+/swarm_ws/
+/ugv_ws/
+
+# 第三方源码与参考仓库
+/references/
+/reference/
+/docker/kalibr/source/
+
+# Python 缓存与数据记录
+__pycache__/
+*.py[cod]
+.pytest_cache/
+*.bag
+*.db3
+*.mcap
+*.ulg

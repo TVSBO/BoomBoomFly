@@ -1,0 +1,169 @@
+--- a/src/lib/timesync/Timesync.cpp
++++ b/src/lib/timesync/Timesync.cpp
+@@ -44,6 +44,8 @@
+ 
+ void Timesync::update(const uint64_t now_us, const int64_t remote_timestamp_ns, const int64_t originate_timestamp_ns)
+ {
++	if (_time_based && _last_sample_us != 0 && now_us <= _last_sample_us) { return; }
++
+ 	// Message originating from this system, compute time offset from it
+ 	if (remote_timestamp_ns > 0) {
+ 		// Calculate time offset between this system and the remote system, assuming RTT for
+@@ -87,7 +89,7 @@
+ 				}
+ 
+ 				// Perform filter update
+-				add_sample(offset_us);
++				add_sample(offset_us, now_us);
+ 
+ 				// Increment sequence counter after filter update
+ 				_sequence++;
+@@ -132,12 +134,14 @@
+ 	}
+ }
+ 
+-void Timesync::add_sample(int64_t offset_us)
++void Timesync::add_sample(int64_t offset_us, uint64_t now_us)
+ {
+ 	// Online exponential smoothing filter. The derivative of the estimate is also
+ 	// estimated in order to produce an estimate without steady state lag:
+ 	// https://en.wikipedia.org/wiki/Exponential_smoothing#Double_exponential_smoothing
+ 	double time_offset_prev = _time_offset;
++	const double dt = (_time_based && _last_sample_us != 0) ? (now_us - _last_sample_us) / 1e6 : 1.0;
++	_last_sample_us = now_us;
+ 
+ 	if (_sequence == 0) {
+ 		// First offset sample
+@@ -145,10 +149,10 @@
+ 
+ 	} else {
+ 		// Update the clock offset estimate
+-		_time_offset = _filter_alpha * offset_us + (1.0 - _filter_alpha) * (_time_offset + _time_skew);
++		_time_offset = _filter_alpha * offset_us + (1.0 - _filter_alpha) * (_time_offset + _time_skew * dt);
+ 
+ 		// Update the clock skew estimate
+-		_time_skew = _filter_beta * (_time_offset - time_offset_prev) + (1.0 - _filter_beta) * _time_skew;
++		_time_skew = _filter_beta * ((_time_offset - time_offset_prev) / dt) + (1.0 - _filter_beta) * _time_skew;
+ 	}
+ }
+ 
+@@ -156,6 +160,7 @@
+ {
+ 	// Do a full reset of all statistics and parameters
+ 	_sequence = 0;
++	_last_sample_us = 0;
+ 	_time_offset = 0.0;
+ 	_time_skew = 0.0;
+ 	_filter_alpha = ALPHA_GAIN_INITIAL;
+--- a/src/lib/timesync/Timesync.hpp
++++ b/src/lib/timesync/Timesync.hpp
+@@ -93,7 +93,8 @@
+ class Timesync
+ {
+ public:
+-	Timesync(uint8_t source = timesync_status_s::SOURCE_PROTOCOL_UNKNOWN) : _source(source) {};
++	Timesync(uint8_t source = timesync_status_s::SOURCE_PROTOCOL_UNKNOWN, bool time_based = false) :
++		_source(source), _time_based(time_based) {};
+ 	~Timesync() = default;
+ 
+ 	void update(const uint64_t now_us, const int64_t remote_timestamp_ns, int64_t originate_timestamp_ns);
+@@ -105,6 +106,13 @@
+ 	uint64_t sync_stamp(uint64_t usec);
+ 
+ 	int64_t offset() const { return (int64_t)_time_offset; }
++
++	/** Extrapolate a DDS clock estimate between valid measurements. */
++	int64_t offset_at(uint64_t now_us) const
++	{
++		if (!_time_based || _last_sample_us == 0 || now_us <= _last_sample_us) { return offset(); }
++		return (int64_t)(_time_offset + _time_skew * ((now_us - _last_sample_us) / 1e6));
++	}
+ 
+ 	/**
+ 	 * Return true if the timesync algorithm converged to a good estimate,
+@@ -123,7 +131,7 @@
+ 	/**
+ 	 * Online exponential filter to smooth time offset
+ 	 */
+-	void add_sample(int64_t offset_us);
++	void add_sample(int64_t offset_us, uint64_t now_us);
+ 	uORB::PublicationMulti<timesync_status_s>  _timesync_status_pub{ORB_ID(timesync_status)};
+ 
+ 	uint32_t _sequence{0};
+@@ -141,4 +149,6 @@
+ 	uint32_t _high_rtt_count{0};
+ 
+ 	uint8_t _source{};
++	bool _time_based{false};
++	uint64_t _last_sample_us{0};
+ };
+--- a/src/modules/uxrce_dds_client/uxrce_dds_client.cpp
++++ b/src/modules/uxrce_dds_client/uxrce_dds_client.cpp
+@@ -52,6 +52,7 @@
+ static constexpr char NAMESPACE_PREFIX[] = "uav_";
+ #define PARTICIPANT_XML_SIZE 512
+ static constexpr uint8_t TIMESYNC_MAX_TIMEOUTS = 10;
++static constexpr hrt_abstime TIMESYNC_INTERVAL_US = 100'000;
+ 
+ using namespace time_literals;
+ 
+@@ -62,7 +63,7 @@
+ 		Timesync *timesync = static_cast<Timesync *>(args);
+ 		timesync->update(current_time / 1000, agent_receive_timestamp, originate_timestamp);
+ 
+-		session->time_offset = -timesync->offset() * 1000; // us -> ns
++		session->time_offset = -timesync->offset_at(current_time / 1000) * 1000; // us -> ns
+ 	}
+ }
+ 
+@@ -530,11 +531,10 @@
+ 				++_num_pings_missed;
+ 			}
+ 
+-			int timeout_ms = 1'000; // 1 second
++			int timeout_ms = 0; // Receive PONG asynchronously in the main loop; do not stall timestamps.
+ 			uint8_t attempts = 1;
+-			uxr_ping_agent_session(session, timeout_ms, attempts);
+-
+-			_had_ping_reply = false;
++			_had_ping_reply = uxr_ping_agent_session(session, timeout_ms, attempts);
++
+ 		}
+ 
+ 		if (_num_pings_missed >= 3) {
+@@ -655,6 +655,10 @@
+ 				}
+ 			}
+ 
++			if (_synchronize_timestamps && _timesync.sync_converged()) {
++				session.time_offset = -_timesync.offset_at(hrt_absolute_time()) * 1000;
++			}
++
+ 			/* Wait for topic updates for max 10 ms */
+ 			int poll = px4_poll(_subs->fds, (sizeof(_subs->fds) / sizeof(_subs->fds[0])), orb_poll_timeout_ms);
+ 
+@@ -681,10 +685,11 @@
+ 			process_replies();
+ 
+ 			// time sync session
+-			if (_synchronize_timestamps && hrt_elapsed_time(&last_sync_session) > 1_s) {
++			if (_synchronize_timestamps && hrt_elapsed_time(&last_sync_session) >= TIMESYNC_INTERVAL_US) {
++
++				last_sync_session = hrt_absolute_time();
+ 
+ 				if (uxr_sync_session(&session, 10) && _timesync.sync_converged()) {
+-					last_sync_session = hrt_absolute_time();
+ 
+ 					if (_param_uxrce_dds_syncc.get() > 0) {
+ 						syncSystemClock(&session);
+--- a/src/modules/uxrce_dds_client/uxrce_dds_client.h
++++ b/src/modules/uxrce_dds_client/uxrce_dds_client.h
+@@ -198,7 +198,7 @@
+ 	bool _session_created{false};
+ 	bool _timesync_converged{false};
+ 
+-	Timesync _timesync{timesync_status_s::SOURCE_PROTOCOL_DDS};
++	Timesync _timesync{timesync_status_s::SOURCE_PROTOCOL_DDS, true};
+ 
+ 	perf_counter_t _loop_perf{perf_alloc(PC_ELAPSED, MODULE_NAME": cycle")};
+ 	perf_counter_t _loop_interval_perf{perf_alloc(PC_INTERVAL, MODULE_NAME": cycle interval")};

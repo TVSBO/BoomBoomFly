@@ -1,0 +1,134 @@
+# 无人机部署配置：按相机、控制、桥接和任务分区管理。
+# 本文件为集中配置，不能整体作为 ROS 节点的 --params-file 使用。
+# OpenVINS 标定和估计器配置仍由工作区 config/openvins/d435i_px4 管理。
+
+# ==================== 相机 ====================
+camera:
+  # 关闭红外投射器，让视觉算法跟踪自然纹理，避免跟踪投射光斑。
+  depth_module.emitter_enabled: 0
+
+# ==================== 飞行控制 ====================
+uav_control:
+  # 可选 dds 或 mavros；启动时仅加载所选后端的参数，切换后需重启节点。
+  backend: dds
+
+  dds:
+    # 对应 PX4 和 px4_msgs v1.17.0；启用 UXRCE_DDS_SYNCT=1。
+    # 使用系统时间，不使用 /clock；话题版本后缀由消息的 MESSAGE_VERSION 决定。
+    # 默认只读；验证部署配置后才可显式关闭只读模式。
+    read_only: false
+    fmu_prefix: /fmu
+    publish_rate_hz: 20.0
+    state_timeout_s: 1.0
+    # 着陆状态无变化时约 1 Hz；独立超时允许调度抖动及单次丢包。
+    landed_state_timeout_s: 2.5
+    # PX4 客户端通常约每秒更新一次 DDS 时间同步。
+    timesync_timeout_s: 3.0
+    position_timeout_s: 0.5
+    # 任意航向 LOCAL_FRD 视觉：使用飞控实际 EV yaw 融合状态判定局部航向。
+    # map 为局部 z-up 坐标系，不承诺与地理东、北对齐。
+    allow_local_vision_heading: true
+    estimator_timeout_s: 2.0
+    target_timeout_s: 1.0
+    command_timeout_s: 3.0
+    prestream_s: 1.1
+    land_handover_timeout_s: 3.0
+    target_system: 1
+    target_component: 1
+    source_system: 1
+    # 命令确认超时后，对应命令仍被锁止，/uav_control/reset 不会解除。
+    # 需在地面更换 source_component 后重启，隔离迟到的命令确认。
+    source_component: 191
+
+  mavros:
+    # MAVROS 的控制、目标和 setpoint 输出默认只读，需显式改为 false 才允许写入。
+    read_only: true
+    publish_rate_hz: 20.0
+    # 保留 MAVROS 独立的状态超时值，避免与 DDS 的配置互相覆盖。
+    state_timeout_s: 2.5
+    position_timeout_s: 0.5
+    target_timeout_s: 1.0
+    land_handover_timeout_s: 3.0
+    command_queue_timeout_s: 3.0
+    command_timeout_s: 3.0
+
+# ==================== 视觉里程计桥接 ====================
+# backend 由 uav_control.backend 唯一选择；enabled 只控制视觉里程计回传。
+uav_bridge:
+  # 启动桥接进程不会自动开启输出。完成部署和只读检查前保持关闭。
+  enabled: true
+  input_topic: /ov_msckf/odomimu
+  visual_health_topic: /ov_msckf/visual_health
+
+  # 输入为 OpenVINS 的世界坐标系和 IMU 坐标系。
+  input_frame_id: global
+  input_child_frame_id: imu
+  # 输出世界坐标系与重力对齐、航向任意，不表示与真北对齐的 ENU。
+  output_frame_id: vio_odom
+  output_child_frame_id: vio_body
+  world_yaw_rad: 0.0
+  # 保留标定的 imu0 坐标轴及原点；部署时需确认 imu0 坐标轴符合机体 FLU。
+  # 标定文件中的 T_i_b=I 表示 imu0 与参考 IMU0 的关系，不能作为机体质心外参。
+  rotation_body_imu_xyzw: [0.0, 0.0, 0.0, 1.0]
+  # 输出位置点为 VIO imu0 原点；相机外参由 OpenVINS 内部处理。
+  position_body_in_imu_m: [0.0, 0.0, 0.0]
+
+  publish_rate_hz: 40.0
+  # 时间限制单位为秒；位置和姿态跳变限制分别为米、弧度。
+  max_sample_age_s: 0.15
+  max_future_s: 0.01
+  visual_timeout_s: 0.3
+  input_timeout_s: 0.2
+  max_position_step_m: 1.0
+  max_attitude_step_rad: 0.75
+  # 下列限制针对坐标变换及杆臂协方差传播后的最大特征值。
+  max_position_variance_m2: 0.16
+  max_attitude_variance_rad2: 0.36
+  max_velocity_variance_m2_s2: 1.44
+  max_angular_velocity_variance_rad2_s2: 4.0
+  # 每个原始样本的位置增量与世界系速度梯形积分预测之间的残差上限，单位为米。
+  max_position_prediction_error_m: 0.12
+  # 速度模长上限，单位 m/s；0 禁用。启用前需用板端原始 VIO 样本定标。
+  max_vio_speed_m_s: 0.0
+
+# ==================== 自动任务 ====================
+uav_mission:
+  # hover：悬停后降落；square：悬停后方形；grid_s：悬停后九宫格 S 形往返。
+  # launch 的 mission_profile 参数可仅对本次启动覆盖，不另建配置文件。
+  mission_profile: grid_s
+  # grid_s：九宫格右下角出发，S 形走完后原路返回。
+  grid_spacing_m: 0.4
+  grid_round_trips: 1
+  # 下列速度/加速度限制约束连续位置参考，不等于实际机体速度硬上限。
+  grid_speed_m_s: 0.15
+  grid_acceleration_m_s2: 0.2
+  grid_position_tolerance_m: 0.08
+  grid_arrival_speed_m_s: 0.15
+  grid_settle_duration_s: 0.5
+  grid_leg_timeout_s: 15.0
+  grid_boundary_margin_m: 0.25
+  grid_max_altitude_error_m: 0.25
+  square_side_m: 0.5
+  # 各角点三维距离及速度连续满足条件后，才进入下一条边。
+  square_position_tolerance_m: 0.08
+  square_max_speed_m_s: 0.15
+  square_settle_duration_s: 0.5
+  square_leg_timeout_s: 10.0
+  # 相对起点水平半径上限 sqrt(2)*边长+余量；高度相对起飞目标检查。
+  square_boundary_margin_m: 0.25
+  square_max_altitude_error_m: 0.25
+  # 本机依靠视觉定位；任务全程检查现有桥接器的视觉健康诊断。
+  require_vio_health: true
+  vio_health_timeout_s: 2.0
+  # 起飞高度及到点容差，单位为米。
+  takeoff_height_m: 1.0
+  horizontal_tolerance_m: 0.2
+  vertical_tolerance_m: 0.15
+  # 稳定判定、悬停持续时间及各阶段超时，单位为秒。
+  stable_duration_s: 2.0
+  hover_duration_s: 10.0
+  ready_timeout_s: 30.0
+  command_timeout_s: 5.0
+  takeoff_timeout_s: 30.0
+  landing_timeout_s: 45.0
+  state_timeout_s: 1.0

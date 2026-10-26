@@ -52,5 +52,13 @@
       "url": "https://github.com/QU-of-boomboom/open_vins",
       "commit": "9cc4bf555f70075d0b6f2c3bdf70724c15a9b970"
     }
-  ]
+  ],
+  "remote_push_verified": true,
+  "remote_clean_clone_verified": true,
+  "tracked_files_verified": 519,
+  "git_tree_identical": true,
+  "nested_gitlinks": false,
+  "remote_url": "https://github.com/TVSBO/BoomBoomFly",
+  "clean_clone_tested_commit": "cc0d3c9ef95df3860b8613f8338931f8c768ad0e",
+  "line_ending_policy": "Git normalizes text according to .gitattributes; checkout trees and clean working directories verified."
 }

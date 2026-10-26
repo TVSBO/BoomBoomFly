@@ -86,3 +86,9 @@ git push origin main
 所有自研模块随本仓库统一提交。恢复出的第三方工作树及 build/install/log、录包和固件二进制均被忽略。
 组织多仓库版的脚本与清单只在 docs/multi_repository_reference 下作为历史参考保留，
 本版无需运行 restore_release.py、sync_ros_packages.sh 或 repo sync。
+
+## 发布检查
+
+2026-10-26 已作为一个公开仓库推送至 TVSBO/BoomBoomFly。
+全新克隆可直接获得全部自研模块和修改版 OpenVINS，519 个已跟踪文件的 Git 源码树核对一致，无 gitlink 或嵌套 Git 元数据。
+运行源码和配置与组织版一致；检查记录见 publication-validation.json。本次未运行 ROS/PX4 编译或硬件测试。

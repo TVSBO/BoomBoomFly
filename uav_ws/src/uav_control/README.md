@@ -26,7 +26,7 @@ BUILD_MAVROS_INTERFACE 的 CMake 默认值为 ON，主工程构建脚本显式�
 请从 [主工程](https://github.com/TVSBO/BoomBoomFly) 获取完整工作区，使用其
 Scripts/restore_dependencies.py 和 reproduction/build_uav.sh。
 常规启动统一使用 ros2 launch uav_bringup uav.launch.py；backend 与参数来自 uav_bringup/config/uav.yaml。
-定位标定在 [uav_ws](https://github.com/QU-of-boomboom/uav_ws)/config/openvins/d435i_px4。
+定位标定在 [uav_ws](https://github.com/TVSBO/BoomBoomFly/tree/main/uav_ws)/config/openvins/d435i_px4。
 
 ## 来源与验证边界
 

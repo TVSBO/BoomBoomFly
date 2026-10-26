@@ -9,7 +9,7 @@ ROS 2 Humble 室内无人机工作区，负责标定、配置、仿真及工程�
 
 D435i 双目红外图像与 PX4 IMU 输入 OpenVINS，经 uav_bridge 回传外部视觉；
 uav_mission 通过共享接口驱动 uav_control，当前使用 DDS 与 PX4 通信，保留 MAVROS 后端。
-集中配置在独立 uav_bringup 仓库的 config/uav.yaml：DDS read_only=false、桥接 enabled=true、
+集中配置在 uav_bringup 目录的 config/uav.yaml：DDS read_only=false、桥接 enabled=true、
 任务 profile=grid_s、require_vio_health=true。launch 默认不启动任务。
 
 ## 获取与编译
